@@ -19,8 +19,6 @@ import { withStyles } from '@material-ui/core/styles';
 import icon from '../../assets/favicon.ico';
 
 
-
-
 const styles = theme => ({
   appBar: {
     position: 'relative',
@@ -81,7 +79,7 @@ const projectsData = {
       title: 'My Reads',
       summary: 'In the MyReads project, I have created a bookshelf app that allows users, to select and categorize books they have read, are currently reading, or want to read.',
       thumbnail: '',
-      liveURL: 'https://wouldyouratherreactpwa.firebaseapp.com/login',
+      liveURL: 'https://my-reads-pwa.firebaseapp.com',
     },
     2: {
       id: 2,
@@ -95,11 +93,11 @@ const projectsData = {
       title: 'Udaci Cards - Mobile App',
       summary: 'The UdaciCards project is a mobile application (Android or iOS - or both) that allows users to study collections of flashcards. The app is built using React-Native.',
       thumbnail: '',
-      liveURL: 'https://wouldyouratherreactpwa.firebaseapp.com/login',
+      liveURL: 'https://expo.io/@angademigod666/mobile-flashcards/builds',
     },
     4: {
       id:4,
-      title: 'Would you rather? - Mobile ready - PWA',
+      title: 'Would you rather? - Mobile first - PWA',
       summary: 'The Would you rather app deployed as a PWA.',
       thumbnail: '',
       liveURL: 'https://wouldyouratherreactpwa.firebaseapp.com/login',
@@ -109,7 +107,14 @@ const projectsData = {
       title: 'Skills portfolio',
       summary: 'The app describes my skills and abilities. The app is built with React, and follows Google\'s material guidelines.',
       thumbnail: '',
-      liveURL: 'https://wouldyouratherreactpwa.firebaseapp.com/login',
+      liveURL: 'https://angad-skills-app.firebaseapp.com',
+    },
+    6: {
+      id: 5,
+      title: 'My Reads - Mobile first PWA',
+      summary: 'The My Reads app deployed as a PWA.',
+      thumbnail: '',
+      liveURL: 'https://my-reads-pwa.firebaseapp.com',
     },
 
   },
@@ -194,7 +199,7 @@ function Projects(props) {
                       More
                     </Button>
                     <Button color="secondary" variant="outlined" size="small">
-                      <a href={projects[card].liveURL}>View live</a>
+                      <a target="_blank" href={projects[card].liveURL}>View live</a>
                     </Button>
                   </CardActions>
                 </Card>

@@ -105,7 +105,7 @@ const appData = {
     summary: { 0: 'Angad Singh Bindra ' },
     description: {
       0: 'Detail-oriented full stack developer with a proven track record of integrating passion for teaching with technical development skills. ',
-      1: 'Demonstrated strong leadership skills and ability to deliver innovative implementations within tight deadline. Great at time-management and communication. ',
+      1: 'Demonstrated strong leadership skills and ability to deliver innovative implementations within tight deadlines. Great at time-management and communication. ',
       2: 'On a never-ending quest of learning to improve the programming process. '
     }
   },
