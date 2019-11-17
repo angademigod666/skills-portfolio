@@ -15,8 +15,6 @@ import Typography from '@material-ui/core/Typography';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import icon from '../../assets/favicon.ico';
-
 
 const styles = theme => ({
   appBar: {
@@ -42,7 +40,7 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit * 3,
     marginRight: theme.spacing.unit * 3,
     [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
-      width: 1100,
+      width: 1350,
       marginLeft: 'auto',
       marginRight: 'auto',
     },
@@ -62,10 +60,6 @@ const styles = theme => ({
   cardContent: {
     flexGrow: 1,
   },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing.unit * 6,
-  },
 });
 
 
@@ -73,46 +67,53 @@ const styles = theme => ({
 const projectsData = {
 
   projects: {
+    0: {
+      id: 0,
+      title: 'The NASApp',
+      summary: 'In the NASApp, NASA data, like imagery, color analysis, accessible to astronomy enthusiasts. The media catalog is growing everyday.',
+      thumbnail: '/projects/APOD.png',
+      liveURL: 'https://nasa-pwa-app.firebaseapp.com',
+    },
     1: {
       id: 1,
       title: 'My Reads',
       summary: 'In the MyReads project, I have created a bookshelf app that allows users, to select and categorize books they have read, are currently reading, or want to read.',
-      thumbnail: '',
+      thumbnail: '/projects/MyReads.png',
       liveURL: 'https://my-reads-pwa.firebaseapp.com',
     },
     2: {
       id: 2,
       title: 'Would you rather?',
       summary: 'The "Would You Rather?" Project, is a web app that lets a user play the “Would You Rather?” game.',
-      thumbnail: '',
+      thumbnail: '/projects/WouldYouRather.png',
       liveURL: 'https://wouldyouratherreactpwa.firebaseapp.com/login',
     },
     3: {
       id: 3,
       title: 'Udaci Cards - Mobile App',
       summary: 'The UdaciCards project is a mobile application (Android or iOS - or both) that allows users to study collections of flashcards. The app is built using React-Native.',
-      thumbnail: '',
+      thumbnail: '/projects/UdaciCards.png',
       liveURL: 'https://expo.io/@angademigod666/mobile-flashcards/builds',
     },
     4: {
       id: 4,
       title: 'Would you rather? - Mobile first - PWA',
       summary: 'The Would you rather app deployed as a PWA.',
-      thumbnail: '',
+      thumbnail: '/projects/WouldYouRather-PWA.jpg',
       liveURL: 'https://wouldyouratherreactpwa.firebaseapp.com/login',
     },
     5: {
       id: 5,
       title: 'Skills portfolio',
       summary: 'The app describes my skills and abilities. The app is built with React, and follows Google\'s material guidelines.',
-      thumbnail: '',
+      thumbnail: '/projects/MySkillsApp.png',
       liveURL: 'https://angad-skills-app.firebaseapp.com',
     },
     6: {
       id: 5,
       title: 'My Reads - Mobile first PWA',
       summary: 'The My Reads app deployed as a PWA.',
-      thumbnail: '',
+      thumbnail: '/projects/MyReads-PWA.jpg',
       liveURL: 'https://my-reads-pwa.firebaseapp.com',
     },
 
@@ -135,46 +136,21 @@ function Projects(props) {
             <Typography component="h1" variant="h2" align="center" color="secondary" gutterBottom>
               My Projects
             </Typography>
-            {/* <Typography variant="h6" align="center" color="textSecondary" paragraph>
-              Something short and leading about the collection below—its contents, the creator, etc.
-              Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-              entirely.
-            </Typography> */}
             <Typography variant="h6" align="center" color="primary" paragraph>
               The area showcases the projects that I am currently working on. Click on more, to know more
             </Typography>
-
-
-            {/* <div className={classes.heroButtons}>
-              <Grid container spacing={16} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    Main call to action
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Secondary action
-                  </Button>
-                </Grid>
-              </Grid>
-            </div> */}
-
-
           </div>
         </div>
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
           <Grid container spacing={40}>
-            {Object.keys(projects).map((card, key) => (
-              <Grid item key={key} sm={6} md={6} lg={4}>
+            {projects && Object.keys(projects).map((card, key) => (
+              <Grid item key={key} sm={6} md={6} lg={3}>
                 <Card className={classes.card}>
-
                   <CardMedia
                     className={classes.cardMedia}
-                    //image={card.thumbnail}
-                    image={icon}
-                    title={card.title}
+                    image={projects[card].thumbnail}
+                    title={projects[card].title}
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography color="secondary" gutterBottom variant="h5" component="h1">

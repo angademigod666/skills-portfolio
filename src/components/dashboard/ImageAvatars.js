@@ -4,8 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
 
-import angadImage from '../../assets/angad.jpg'
-
 const styles = {
   bigAvatar: {
     margin: 10,
@@ -18,7 +16,7 @@ function ImageAvatars(props) {
   const { classes } = props;
   return (
     <Grid container justify="center" alignItems="center">
-      <Avatar alt="Remy Sharp" src={angadImage} className={classes.bigAvatar} />
+      <Avatar alt="Remy Sharp" src='/angad.jpg' className={classes.bigAvatar} />
     </Grid>
   );
 }
