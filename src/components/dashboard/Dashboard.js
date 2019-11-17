@@ -1,31 +1,16 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
-
-import Divider from '@material-ui/core/Divider';
-import Markdown from './Markdown';
-import post1 from './blog-post.1.md';
-import post2 from './blog-post.2.md';
-import post3 from './blog-post.3.md';
 import ImageAvatars from './ImageAvatars';
 
 import DetailedExpansionPanel from './Expansion';
 
-
-// import IconButton from '@material-ui/core/IconButton';
-// import SearchIcon from '@material-ui/icons/Search';
-// import Button from '@material-ui/core/Button';
-// import Card from '@material-ui/core/Card';
-// import CardContent from '@material-ui/core/CardContent';
-// import CardMedia from '@material-ui/core/CardMedia';
-// import Hidden from '@material-ui/core/Hidden';
 
 const styles = theme => ({
   layout: {
@@ -97,7 +82,7 @@ const appData = {
     'Mysuru - 570027, Karnataka, India',
     '+91-999-945-6508',
     'bindra.angadsingh@gmail.com',
-    'www.angadresume.com',
+    'angad-skills-app.firebaseapp.com',
   ],
 
   profile: {
@@ -185,21 +170,11 @@ const appData = {
   },
 };
 
-const posts = [post1, post2, post3];
-
-const archives = [
-  'March 2020',
-  'February 2020',
-];
-
-const social = ['GitHub', 'Twitter', 'Facebook'];
-
 function Dashboard(props) {
   const { classes } = props;
 
   return (
-    <React.Fragment>
-      <CssBaseline />
+    <Fragment>
       <div className={classes.layout}>
         {/* <Toolbar className={classes.toolbarMain}>
           <Button size="small">Subscribe</Button>
@@ -222,7 +197,7 @@ function Dashboard(props) {
               </Typography>
             ))}
           </Toolbar>
-          
+
           <Paper className={classes.mainFeaturedPost}>
             <Grid container>
               <Grid item md={3}>
@@ -336,17 +311,8 @@ function Dashboard(props) {
           <Grid container spacing={40} className={classes.mainGrid}>
             {/* Main content */}
             <Grid item xs={12} md={8}>
-              {/* 
-              <Typography variant="h6" gutterBottom>
-                From the Firehose
-              </Typography>
-              <Divider />
-               {posts.map(post => (
-                <Markdown className={classes.markdown} key={post.substring(0, 40)}>
-                  {post}
-                </Markdown>
-              ))} */}
-              
+
+
             </Grid>
             {/* End main content */}
 
@@ -383,7 +349,7 @@ function Dashboard(props) {
         </main>
       </div>
 
-    </React.Fragment>
+    </Fragment>
   );
 }
 

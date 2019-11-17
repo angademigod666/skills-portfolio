@@ -1,11 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { handleInitialData } from '../actions/shared'
 
-import LoadingBar from 'react-redux-loading'
-import NewTweet from './NewTweet'
-import TweetPage from './TweetPage'
 import Nav from './Nav'
 import Dashboard from './dashboard/Dashboard';
 import Projects from './projects/Projects';
@@ -15,6 +10,7 @@ import Contact from './contact/Contact';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 // import purple from '@material-ui/core/colors/purple';
 // import green from '@material-ui/core/colors/green';
 
@@ -34,54 +30,43 @@ const styles = theme => ({
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleInitialData())
+    //this.props.dispatch(handleInitialData())
   }
   render() {
     const { classes } = this.props;
     return (
       <Router>
-        
+
         <Fragment>
-          <LoadingBar />
+          <CssBaseline/>
           <div className='container'>
-            <Nav/>
-            <br/>
-            <br/>
-            <br/>
-            {this.props.loading === true
-              ? null
-              : <div>
-                <Switch>
-                  <Route path='/' exact component={Dashboard} />
-                  <Route path='/projects' exact component={Projects} />
-                  <Route path='/contactMe' exact component={Contact} />
-                  {/* <Route path='/tweet/:id' component={TweetPage} />
-                  <Route path='/new' component={NewTweet} /> */}
-                  <Route path="/**" exact component={Dashboard} />
-                  </Switch>
-                </div>
-            }
+            <Nav />
+            <br />
+            <br />
+            <br />
+
+            <Switch>
+              <Route path='/' exact component={Dashboard} />
+              <Route path='/projects' exact component={Projects} />
+              <Route path='/contactMe' exact component={Contact} />
+              <Route path="/**" exact component={Dashboard} />
+            </Switch>
+
+            {/* Footer */}
           </div>
-                {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
+          <footer className={classes.footer}>
+            <Typography variant="h6" align="center" gutterBottom>
+              Footer
         </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
+            <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+              Something here to give the footer a purpose!
         </Typography>
-      </footer>
-      {/* End footer */}
+          </footer>
+          {/* End footer */}
         </Fragment>
-        
+
       </Router>
     )
-  }
-}
-
-function mapStateToProps ({ authedUser }) {
-  return {
-    loading: authedUser === null
   }
 }
 
@@ -89,7 +74,7 @@ App.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps)( withStyles(styles)(App) );
+export default withStyles(styles)(App);
 
 
 

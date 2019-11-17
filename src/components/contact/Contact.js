@@ -16,6 +16,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 
 import * as emailjs from 'emailjs-com';
 
+
 const styles = theme => ({
   main: {
     width: 'auto',
@@ -49,23 +50,31 @@ const styles = theme => ({
   },
 });
 
-class Contact extends React.Component {
 
+
+
+
+class Contact extends React.Component {
 
   // User ID: user_cxeq8twUOPJzxrLcTJnlc
   // Access token: 28039918b8eaeb6dd3bcdadd8d7095a1
 
   // <YOUR SERVICE ID>: gmail
 
-  formSubmit(e) {
-    e.preventDefault();
-    alert(JSON.stringify(this.state));
 
-    emailjs.sendForm('gmail', '<YOUR TEMPLATE ID>', JSON.stringify(this.state), 'user_cxeq8twUOPJzxrLcTJnlc')
-      .then((response)=> {
+  // google reCaptcha - Site key: 6LenAaMUAAAAAFQ7w2XyL3bKXJe6VYQdJAMd_iTC
+  // google reCaptcha - Secret Key: 6LenAaMUAAAAADAxEmUFLd0eXDm3rdMy6SS113kE
+
+  formSubmit=(e)=> {
+    e.preventDefault();
+    console.log(typeof e.target);
+    
+
+    emailjs.sendForm('gmail', 'template_FMo0TPps', e.target, 'user_cxeq8twUOPJzxrLcTJnlc')
+      .then((response) => {
         console.log('EMail Sent!! - SUCCESS!', response.status, response.text);
       })
-      .catch(e=> {
+      .catch(e => {
         console.log('EMail FAILED...', e);
       });
 
@@ -90,19 +99,18 @@ class Contact extends React.Component {
     formValid: false
   };
 
-  handleChange(e) {
-
+  handleChange=(e)=> {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({ [name]: value },
       () => {
-        this.validateField(name, value)
+        this.validateField(name, value);
       }
     );
 
   }
 
-  validateField(fieldName, value) {
+  validateField=(fieldName, value)=> {
     let fieldValidationErrors = this.state.formErrors;
 
     let emailValid = this.state.emailValid;
@@ -140,7 +148,7 @@ class Contact extends React.Component {
     }, this.validateForm());
   }
 
-  validateForm() {
+  validateForm=()=> {
     this.setState({
       formValid: (this.state.emailValid &&
         this.state.nameValid &&
@@ -151,9 +159,9 @@ class Contact extends React.Component {
 
 
 
-  render() {
+  render=()=> {
     const { classes } = this.props;
-
+    
     return (
       <main className={classes.main}>
         <CssBaseline />

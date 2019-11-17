@@ -8,14 +8,8 @@ import 'primereact/resources/themes/nova-dark/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import reducer from './reducers'
-import middleware from './middleware'
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-
-const store = createStore(reducer, middleware)
 
 const theme = createMuiTheme({
   palette: {
@@ -40,11 +34,11 @@ const theme = createMuiTheme({
 });
 
 ReactDOM.render(
-  <Provider store={store}>
+
     <MuiThemeProvider theme={theme}>
       <App />
     </MuiThemeProvider>
-  </Provider>,
+,
   document.getElementById('root')
 )
 

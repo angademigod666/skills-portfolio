@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -8,7 +8,6 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 
 import Typography from '@material-ui/core/Typography';
@@ -74,7 +73,7 @@ const styles = theme => ({
 const projectsData = {
 
   projects: {
-    1 : {
+    1: {
       id: 1,
       title: 'My Reads',
       summary: 'In the MyReads project, I have created a bookshelf app that allows users, to select and categorize books they have read, are currently reading, or want to read.',
@@ -96,7 +95,7 @@ const projectsData = {
       liveURL: 'https://expo.io/@angademigod666/mobile-flashcards/builds',
     },
     4: {
-      id:4,
+      id: 4,
       title: 'Would you rather? - Mobile first - PWA',
       summary: 'The Would you rather app deployed as a PWA.',
       thumbnail: '',
@@ -128,21 +127,12 @@ function Projects(props) {
   const projects = projectsData.projects;
 
   return (
-    <React.Fragment>
-      <CssBaseline />
-      {/* <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
-          <CameraIcon className={classes.icon} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Album layout
-          </Typography>
-        </Toolbar>
-      </AppBar> */}
+    <Fragment>
       <main>
         {/* Hero unit */}
         <div className={classes.heroUnit}>
           <div className={classes.heroContent}>
-            <Typography  component="h1" variant="h2" align="center" color="secondary" gutterBottom>
+            <Typography component="h1" variant="h2" align="center" color="secondary" gutterBottom>
               My Projects
             </Typography>
             {/* <Typography variant="h6" align="center" color="textSecondary" paragraph>
@@ -150,7 +140,7 @@ function Projects(props) {
               Make it short and sweet, but not too short so folks don&apos;t simply skip over it
               entirely.
             </Typography> */}
-            <Typography  variant="h6" align="center" color="primary" paragraph>
+            <Typography variant="h6" align="center" color="primary" paragraph>
               The area showcases the projects that I am currently working on. Click on more, to know more
             </Typography>
 
@@ -176,14 +166,14 @@ function Projects(props) {
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
           <Grid container spacing={40}>
-            {Object.keys(projects).map( (card,key) => (
-              <Grid item key={key} sm={6}  md={6} lg={4}>
+            {Object.keys(projects).map((card, key) => (
+              <Grid item key={key} sm={6} md={6} lg={4}>
                 <Card className={classes.card}>
-                  
+
                   <CardMedia
                     className={classes.cardMedia}
                     //image={card.thumbnail}
-                    image = {icon}
+                    image={icon}
                     title={card.title}
                   />
                   <CardContent className={classes.cardContent}>
@@ -199,7 +189,7 @@ function Projects(props) {
                       More
                     </Button>
                     <Button color="secondary" variant="outlined" size="small">
-                      <a target="_blank" href={projects[card].liveURL}>View live</a>
+                      <a target="_blank" rel="noopener noreferrer" href={projects[card].liveURL}>View live</a>
                     </Button>
                   </CardActions>
                 </Card>
@@ -208,7 +198,7 @@ function Projects(props) {
           </Grid>
         </div>
       </main>
-    </React.Fragment>
+    </Fragment>
   );
 }
 
