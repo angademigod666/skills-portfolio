@@ -15,12 +15,12 @@ import DetailedExpansionPanel from './Expansion';
 const styles = theme => ({
   layout: {
     width: 'auto',
-    marginLeft: theme.spacing.unit * 0.5,
-    marginRight: theme.spacing.unit * 0.5,
-    [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
+    marginLeft: theme.spacing(0.5),
+    marginRight: theme.spacing(0.5),
+    [theme.breakpoints.up(1100 + theme.spacing(3*2))]: {
       width: 'auto',
-      marginLeft: theme.spacing.unit * 10,
-      marginRight: theme.spacing.unit * 10,
+      marginLeft: theme.spacing(10),
+      marginRight: theme.spacing(10),
     },
   },
   toolbarMain: {
@@ -37,17 +37,17 @@ const styles = theme => ({
     //backgroundColor: theme.palette.grey[800],
     backgroundColor: theme.palette.secondary.main,
     color: theme.palette.common.white,
-    marginBottom: theme.spacing.unit * 3,
+    marginBottom: theme.spacing(3),
   },
   mainFeaturedPostContent: {
-    padding: `${theme.spacing.unit * 6}px`,
+    padding: `${theme.spacing(6)}px`,
 
     [theme.breakpoints.up('md')]: {
       paddingRight: 0,
     },
   },
   mainGrid: {
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing(3),
   },
   card: {
     display: 'flex',
@@ -59,19 +59,19 @@ const styles = theme => ({
     width: 160,
   },
   markdown: {
-    padding: `${theme.spacing.unit * 3}px 0`,
+    padding: `${theme.spacing(3)}px 0`,
   },
   sidebarAboutBox: {
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing(2),
     backgroundColor: theme.palette.grey[200],
   },
   sidebarSection: {
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing(3),
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
-    marginTop: theme.spacing.unit * 8,
-    padding: `${theme.spacing.unit * 6}px 0`,
+    marginTop: theme.spacing(8),
+    padding: `${theme.spacing(6)}px 0`,
   },
 });
 
@@ -103,9 +103,12 @@ const appData = {
       1: 'Guru Gobind Singh Indraprastha University, Delhi, India ',
       2: 'July 2011 – May 2015 ',
       3: 'Equivalent to: Bachelor\'s degree (4 yrs) ',
+      4: {
+        0: 'Certifications: ',
+        1: [<a target='_blank' rel='noopener noreferrer' href='https://graduation.udacity.com/confirm/LSKLQCS'>Udacity's React Nanodegree</a>],
+      },
     }
   },
-
   technical: {
     title: 'Technical skills',
     summary: { 0: 'View skills across various stacks ' },
@@ -176,19 +179,6 @@ function Dashboard(props) {
   return (
     <Fragment>
       <div className={classes.layout}>
-        {/* <Toolbar className={classes.toolbarMain}>
-          <Button size="small">Subscribe</Button>
-          <Typography component="h2"variant="h5" color="inherit" 
-          align="center" noWrap className={classes.toolbarTitle}>
-            Blog
-          </Typography>
-          <IconButton>
-            <SearchIcon />
-          </IconButton>
-          <Button variant="outlined" size="small">
-            Sign up
-          </Button>
-        </Toolbar> */}
         <header>
           <Toolbar variant="dense" className={classes.toolbarSecondary}>
             {appData.sections.map(section => (
@@ -219,27 +209,14 @@ function Dashboard(props) {
                       {appData.profile.description[key]}
                     </Typography>
                   ))}
-
-                  {/* <Typography variant="h6" color="inherit" paragraph>
-                    I love combining my passion for teaching with my software development skills.
-                    I enjoy learning new skills to enhance my repertoire by building personalized learning techniques and applications for various prerequisite skill levels.
-                  </Typography> */}
                 </div>
               </Grid>
             </Grid>
           </Paper>
-
-
         </header>
 
-
-
         <main>
-          {/* Main featured post */}
-          {/* End main featured post */}
-          {/* Sub featured posts */}
-
-          <Grid container spacing={40} className={classes.cardGrid}>
+          <Grid container spacing={5} className={classes.cardGrid}>
             <Grid item key={1} xs={12} md={6}>
               <DetailedExpansionPanel post={appData.education} />
             </Grid>
@@ -248,7 +225,7 @@ function Dashboard(props) {
             </Grid>
           </Grid>
 
-          <Grid container spacing={40} className={classes.cardGrid}>
+          <Grid container spacing={5} className={classes.cardGrid}>
             <Grid item key={1} xs={12} md={6}>
               <DetailedExpansionPanel post={appData.abilities} />
             </Grid>
@@ -256,99 +233,8 @@ function Dashboard(props) {
               <DetailedExpansionPanel post={appData.experience} />
             </Grid>
           </Grid>
-
-
-          {/* <Grid container spacing={40} className={classes.cardGrid}>
-            {featuredPosts.map(post => (
-              <Grid item key={post.title} xs={12} md={6}>
-                <BarChartDemo barChartData={post.barChartData} />
-              </Grid>
-            ))}
-          </Grid> */}
-
-
-
-
-
-          {/*
-
-          <Grid container spacing={40} className={classes.cardGrid}>
-            {featuredPosts.map(post => (
-              <Grid item key={post.title} xs={12} md={6}>
-                <Card className={classes.card}>
-                  <div className={classes.cardDetails}>
-                    <CardContent>
-                      <Typography component="h2" variant="h5">
-                        {post.title}
-                      </Typography>
-                      <Typography variant="subtitle1" color="textSecondary">
-                        {post.date}
-                      </Typography>
-                      <Typography variant="subtitle1" paragraph>
-                        {post.description}
-                      </Typography>
-                      <Typography variant="subtitle1" color="primary">
-                        Continue reading...
-                      </Typography>
-                    </CardContent>
-                  </div>
-                  <Hidden xsDown>
-                    <CardMedia
-                      className={classes.cardMedia}
-                      image="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22288%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20288%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_164edaf95ee%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_164edaf95ee%22%3E%3Crect%20width%3D%22288%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.32500076293945%22%20y%3D%22118.8%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" // eslint-disable-line max-len
-                      title="Image title"
-                    />
-                  </Hidden>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-*/}
-
-          {/* End sub featured posts */}
-
-
-          <Grid container spacing={40} className={classes.mainGrid}>
-            {/* Main content */}
-            <Grid item xs={12} md={8}>
-
-
-            </Grid>
-            {/* End main content */}
-
-
-            {/* Sidebar */}
-            {/* <Grid item xs={12} md={4}>
-              <Paper elevation={0} className={classes.sidebarAboutBox}>
-                <Typography variant="h6" gutterBottom>
-                  About
-                </Typography>
-                <Typography>
-                  Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit
-                  amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
-                </Typography>
-              </Paper>
-              <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
-                Archives
-              </Typography>
-              {archives.map(archive => (
-                <Typography key={archive}>{archive}</Typography>
-              ))}
-              <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
-                Social
-              </Typography>
-              {social.map(network => (
-                <Typography key={network}>{network}</Typography>
-              ))}
-            </Grid> */}
-            {/* End sidebar */}
-
-
-
-          </Grid>
         </main>
       </div>
-
     </Fragment>
   );
 }

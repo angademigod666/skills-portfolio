@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 
 import Nav from './Nav'
 import Dashboard from './dashboard/Dashboard';
@@ -46,18 +46,16 @@ class App extends Component {
       <Router>
         <Fragment>
           <CssBaseline />
-
-
           <Nav />
           <div className='container'>
             <br />
             <br />
             <br />
             <Switch>
-              <Route path='/' exact component={Dashboard} />
-              <Route path='/projects' exact component={Projects} />
-              <Route path='/contactMe' exact component={Contact} />
-              <Route path="/**" exact component={Dashboard} />
+              <Route exact path='/' component={Dashboard} />
+              <Route exact path='/projects' component={Projects} />
+              <Route exact path='/contactMe' component={Contact} />
+              <Route exact path="**" component={()=><Redirect to='/' />} />
             </Switch>
           </div>
           <footer className={classes.footer}>

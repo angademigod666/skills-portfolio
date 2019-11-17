@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactElement} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { BarChartDemo } from './BarChart';
+import { jsxAttribute } from '@babel/types';
 
 
 // import Chip from '@material-ui/core/Chip';
@@ -66,7 +67,7 @@ const styles = theme => ({
   },
   helper: {
     borderLeft: `2px solid ${theme.palette.divider}`,
-    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
+    padding: `${theme.spacing(1)}px ${theme.spacing(2)}px`,
     alignItems: 'auto'
   },
   link: {
@@ -111,26 +112,28 @@ function DetailedExpansionPanel(props) {
             {JSON.stringify(post.description)}
           </Typography>
           <Divider/> */}
+          
           <ul>
             {Object.keys(post.description).map((key) => (
               <li key={key}>
                 {typeof post.description[key] === 'string' ? (
                   <Typography color="primary" variant="subtitle1" paragraph>{post.description[key]}</Typography>
                 ) : (
-                    Object.keys(post.description[key]).map((key2) =>
-                      typeof post.description[key][key2] === 'string' ? (
+                    Object.keys(post.description[key]).map((key2, index) =>
+                      (typeof post.description[key][key2] === 'string')  ? (
                         <Typography color="primary" key={key2} variant="subtitle1" paragraph>
                           {post.description[key][key2]}
                         </Typography>
                       ) : (
-                          <ul key={key2}>
-                            {Object.keys(post.description[key][key2]).map((key3) => (
-                              <li key={key3}>
+                          <ul key={index}>
+                            {Object.keys(post.description[key][key2]).map((key3, index) => (
+                              <li key={index}>
                                 <Typography color="secondary" variant="subtitle1" paragraph>{post.description[key][key2][key3]}</Typography>
                               </li>
                             ))}
                           </ul>
                         )
+                      
                     ))}
               </li>
             ))}

@@ -21,7 +21,7 @@ const styles = theme => ({
     position: 'relative',
   },
   icon: {
-    marginRight: theme.spacing.unit * 2,
+    marginRight: theme.spacing(2),
   },
   heroUnit: {
     //backgroundColor: theme.palette.background.paper,
@@ -30,23 +30,23 @@ const styles = theme => ({
   heroContent: {
     maxWidth: 600,
     margin: '0 auto',
-    padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`,
+    padding: `${theme.spacing(8)}px 0 ${theme.spacing(6)}px`,
   },
   heroButtons: {
-    marginTop: theme.spacing.unit * 4,
+    marginTop: theme.spacing(4),
   },
   layout: {
     width: 'auto',
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
+    marginLeft: theme.spacing(3),
+    marginRight: theme.spacing(3),
+    [theme.breakpoints.up(1100 + theme.spacing(3 * 2))]: {
       width: 1350,
       marginLeft: 'auto',
       marginRight: 'auto',
     },
   },
   cardGrid: {
-    padding: `${theme.spacing.unit * 8}px 0`,
+    padding: `${theme.spacing(8)}px 0`,
   },
   card: {
     height: '100%',
@@ -143,7 +143,7 @@ function Projects(props) {
         </div>
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
-          <Grid container spacing={40}>
+          <Grid container spacing={5}>
             {projects && Object.keys(projects).map((card, key) => (
               <Grid item key={key} sm={6} md={6} lg={3}>
                 <Card className={classes.card}>

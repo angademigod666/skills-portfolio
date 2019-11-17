@@ -6,8 +6,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+// import MenuIcon from '@material-ui/icons/Menu';
 import { NavLink } from 'react-router-dom';
+
+import logo from './logo.svg';
+import './App.css';
 
 
 
@@ -30,17 +33,17 @@ function Nav(props) {
     <div className={classes.root}>
       <AppBar color="primary" position="fixed">
         <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon />
+          <IconButton className={classes.menuButton} aria-label="Menu">
+            <img src={logo} className="App-logo" alt="logo" />
           </IconButton>
           <NavLink to='/' exact className={classes.grow}>
-            <Typography variant="h6" color="default" >Home</Typography>
+            <Typography variant="h6" style={{color: 'black'}} >Home</Typography>
           </NavLink>
           <NavLink to='/projects' className={classes.grow}>
-            <Typography variant="h6" color="default" >Projects</Typography>
+            <Typography variant="h6" style={{color: 'black'}} >Projects</Typography>
           </NavLink>
           <NavLink to='/contactMe' className={classes.grow}>
-            <Typography variant="h6" color="default">Contact me</Typography>
+            <Typography variant="h6" style={{color: 'black'}}>Contact me</Typography>
           </NavLink>
 
           {/* <Button color="inherit">Login</Button> */}
