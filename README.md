@@ -1,3 +1,9 @@
+# skills-portfolio
+The app describes my skills and abilities. The app is built with React, and follows Google's material guidelines.
+
+# Live app link:
+https://angad-skills-app.firebaseapp.com
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 npm i --save @material-ui/core @material-ui/icons chart.js classnames emailjs-com primeicons primereact prop-types react-icons react-router-dom react-transition-group
